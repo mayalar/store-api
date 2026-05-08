@@ -2,6 +2,8 @@ package com.mayala.store.store_api.controller.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mayala.store.store_api.dto.request.LoginRequest;
 import com.mayala.store.store_api.dto.request.RegisterRequest;
 import com.mayala.store.store_api.dto.response.AuthResponse;
+import com.mayala.store.store_api.dto.response.UserProfileResponse;
 import com.mayala.store.store_api.service.AuthService.AuthService;
 
 import jakarta.validation.Valid;
@@ -33,5 +36,13 @@ public class AuthController {
             @RequestBody LoginRequest request) {
 
         return ResponseEntity.ok(authService.login(request));
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<UserProfileResponse> me(Authentication authentication) {
+
+        return ResponseEntity.ok(
+                authService.getProfile(authentication)
+        );
     }
 }

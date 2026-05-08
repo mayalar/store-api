@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mayala.store.store_api.service.ProductService.CheckoutService;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("api/orders")
 public class CheckoutController {
 
     @Autowired

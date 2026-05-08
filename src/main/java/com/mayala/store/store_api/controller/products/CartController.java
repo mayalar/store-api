@@ -15,7 +15,7 @@ import com.mayala.store.store_api.dto.request.AddCartRequest;
 import com.mayala.store.store_api.service.ProductService.CartService;
 
 @RestController
-@RequestMapping("/cart")
+@RequestMapping("api/cart")
 public class CartController {
 
     @Autowired
